@@ -1,0 +1,980 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 31, 2021 at 05:48 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `lms`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `fee` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `title`, `fee`, `created_at`, `updated_at`) VALUES
+(1, '1', NULL, '2021-03-24 18:58:22', NULL),
+(2, '2', NULL, '2021-03-24 18:58:22', NULL),
+(3, '3', NULL, '2021-03-26 11:21:29', NULL),
+(4, '4', NULL, '2021-03-26 11:21:29', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_pages`
+--
+
+CREATE TABLE `cms_pages` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `sub_title` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `type` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cms_pages`
+--
+
+INSERT INTO `cms_pages` (`id`, `title`, `sub_title`, `image`, `type`, `created_at`) VALUES
+(1, 'About us', '', '', 'about-us', '2021-03-05 12:34:16'),
+(2, 'Our Aims', '', '', 'aims', '2021-03-05 12:34:16'),
+(3, 'Our Aims', '', '', 'aims', '2021-03-05 12:34:16'),
+(4, 'Our Aims', '', '', 'aims', '2021-03-05 12:34:16'),
+(5, 'sdsd', 'dfdf', 'sdsd', 'about-us', '2021-03-08 10:53:20'),
+(6, 'abc', 'abc', 'course04.jpg', 'blogs', '2021-03-08 11:02:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_pages_detail`
+--
+
+CREATE TABLE `cms_pages_detail` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) NOT NULL,
+  `detail` varchar(255) NOT NULL DEFAULT 'en',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cms_pages_detail`
+--
+
+INSERT INTO `cms_pages_detail` (`id`, `page_id`, `detail`, `created_at`) VALUES
+(1, 1, 'Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.ortor, at faucibus neque sapien ac elit. Curabi', '2021-03-05 07:35:10'),
+(2, 2, 'Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.ortor, at faucibus neque sapien ac elit. Curabi', '2021-03-05 07:35:10'),
+(3, 3, 'Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.ortor, at faucibus neque sapien ac elit. Curabi', '2021-03-05 07:35:10'),
+(4, 4, 'Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.ortor, at faucibus neque sapien ac elit. Curabi', '2021-03-05 07:35:10'),
+(5, 5, 'Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.ortor, at faucibus neque sapien ac elit. Curabi', '2021-03-08 05:53:20'),
+(6, 6, 'Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.ortor, at faucibus neque sapien ac elit. Curabi', '2021-03-08 06:02:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `country`
+--
+
+CREATE TABLE `country` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `country_code` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `country`
+--
+
+INSERT INTO `country` (`id`, `name`, `country_code`, `created_at`, `updated_at`) VALUES
+(1, 'Pakistan', '92', '0000-00-00 00:00:00', NULL),
+(2, 'UAE', '973', '0000-00-00 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_services`
+--
+
+CREATE TABLE `customer_services` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `country_code` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer_services`
+--
+
+INSERT INTO `customer_services` (`id`, `name`, `email`, `country_code`, `contact`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Salman', 'salman@gmail.com', '376', '03334636416', 'abc', '2021-03-09 12:51:35', '2021-03-09 12:51:35'),
+(2, 'Salman', 'salman@gmail.com', 'Pakistan (+92)', '03334636416', 'abc', '2021-03-09 12:57:56', '2021-03-09 12:57:56'),
+(3, 'Faheem', 'faheem@gmail.com', '213', '03334663646', 'sdsdsldd s sm sdlk slds soksl', '2021-03-09 12:58:57', '2021-03-09 12:58:57'),
+(4, 'Salman', 'salman@gmail.com', 'Pakistan (+92)', '03334636416', 'abc', '2021-03-09 13:02:55', '2021-03-09 13:02:55'),
+(5, 'Salman', 'salman@gmail.com', 'Pakistan (+92)', '0333463646', 'abc', '2021-03-09 13:18:31', '2021-03-09 13:18:31'),
+(6, 'Salman', 'salman@gmail.com', '213', '03334636416', 'abc', '2021-03-09 13:24:26', '2021-03-09 13:24:26'),
+(7, 'Salman', 'salman@gmail.com', 'Pakistan (+92)', '03334636416', 'abc', '2021-03-16 06:03:54', '2021-03-16 06:03:54'),
+(8, 'Salman', 'salman@gmail.com', 'Pakistan (+92)', '3334636416', 'abc def', '2021-03-16 06:05:06', '2021-03-16 06:05:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `title`, `order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'dsds', 1, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_02_25_054512_create_admins_table', 1),
+(5, '2014_10_12_000000_create_users_table', 1),
+(6, '2014_10_12_100000_create_password_resets_table', 1),
+(7, '2019_08_19_000000_create_failed_jobs_table', 1),
+(8, '2021_02_25_054512_create_admins_table', 1),
+(9, '2021_03_10_125517_create_items_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `province`
+--
+
+CREATE TABLE `province` (
+  `id` int(11) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `province`
+--
+
+INSERT INTO `province` (`id`, `country_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Punjab', '2021-03-25 12:37:51', NULL),
+(2, 1, 'Sindh', '2021-03-25 12:37:51', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `subject_id` int(11) NOT NULL,
+  `teacher_id` int(11) DEFAULT NULL,
+  `title` varchar(100) DEFAULT NULL,
+  `question_type` varchar(100) DEFAULT NULL,
+  `question_instructions` text,
+  `question_text` text,
+  `answer_type` varchar(100) DEFAULT NULL,
+  `total_marks` varchar(255) NOT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `class_id`, `subject_id`, `teacher_id`, `title`, `question_type`, `question_instructions`, `question_text`, `answer_type`, `total_marks`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 3, 'MCQs', 'add_text', '<p>Question Instructions</p>', '<p>Question Detail</p>', 'multiple_choise', '10', 'teacher', 'active', '2021-03-23 17:49:09', NULL),
+(2, 1, 1, 3, 'Video', 'add_text', '<p>Video</p>', '<p>Video</p>', 'video', '10', 'teacher', 'active', '2021-03-23 17:49:32', NULL),
+(3, 1, 1, 3, 'Audio', 'add_text', '<p>Audio</p>', '<p>Audio</p>', 'audio', '10', 'teacher', 'active', '2021-03-23 17:49:56', NULL),
+(4, 1, 1, 3, 'Title', 'add_text', '<p>Question Instructions</p>', '<p>Question Detail</p>', 'ques_ans', '10', 'teacher', 'active', '2021-03-23 17:50:42', NULL),
+(5, 1, 1, 3, 'Fill', 'add_text', '<p>Question Instructions</p>', '<p>Question Detail</p>', 'blank', '12', 'teacher', 'active', '2021-03-23 17:51:32', NULL),
+(6, 1, 1, 3, 'Pronounciation', 'add_text', '<p>Pronounciation</p>', '<p>Pronounciation</p>', 'pronunciation', '10', 'teacher', 'active', '2021-03-23 17:52:01', NULL),
+(7, 1, 1, 3, 'sdsds', 'add_text', '<p>sdsd</p>', '<p>sdsds</p>', 'multiple_choise', '10', 'teacher', 'active', '2021-03-25 16:33:55', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions_detail`
+--
+
+CREATE TABLE `questions_detail` (
+  `id` int(11) NOT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `question_list` longtext,
+  `blank_question` varchar(255) DEFAULT NULL,
+  `option1_list` varchar(255) DEFAULT NULL,
+  `option2_list` varchar(255) DEFAULT NULL,
+  `option3_list` varchar(255) DEFAULT NULL,
+  `option4_list` varchar(255) DEFAULT NULL,
+  `answer_list` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions_detail`
+--
+
+INSERT INTO `questions_detail` (`id`, `question_id`, `question_list`, `blank_question`, `option1_list`, `option2_list`, `option3_list`, `option4_list`, `answer_list`, `created_at`, `updated_at`) VALUES
+(1, 1, 'who', NULL, 'are', 'you', 'a', 'b', 'a', '2021-03-23 17:49:09', NULL),
+(2, 4, 'who are you', NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-23 17:50:42', NULL),
+(3, 5, 'where are', 'you', NULL, NULL, NULL, NULL, 'going', '2021-03-23 17:51:32', NULL),
+(4, 7, 'sdsd', NULL, 'sds', 'sdsd', 'sdsd', 'sds', 'a', '2021-03-25 16:33:55', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school`
+--
+
+CREATE TABLE `school` (
+  `id` int(11) NOT NULL,
+  `branch_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `country_code` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school`
+--
+
+INSERT INTO `school` (`id`, `branch_id`, `name`, `email`, `country_code`, `phone`, `created_at`, `updated_at`) VALUES
+(1, 2, 'dsdsd', 'salmanrazabwn@gmail.com', 'Pakistan (+92)', '445454', '2021-03-15 12:56:27', NULL),
+(2, 1, 'sdsdsdsd', 'salmanrazabwn@gmail.com', '213', '45554', '2021-03-15 13:01:13', NULL),
+(3, 1, '221', 'salmanrazabwn@gmail.com', '54', '524545', '2021-03-15 13:04:50', NULL),
+(4, 1, '221', 'salmanrazabwn@gmail.com', '54', '524545', '2021-03-15 13:05:10', NULL),
+(5, 1, 'dsdsk', 'faheem@gmail.com', '374', '2332323', '2021-03-15 13:10:43', NULL),
+(6, 1, 'dsdsk', 'abc@gmail.com', '374', '2332323', '2021-03-15 13:11:08', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_branches`
+--
+
+CREATE TABLE `school_branches` (
+  `id` int(11) NOT NULL,
+  `branch_name` varchar(255) NOT NULL,
+  `contry_code` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school_branches`
+--
+
+INSERT INTO `school_branches` (`id`, `branch_name`, `contry_code`, `contact`, `province`, `country`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Alied School', '92', '031534102542', 'Punjab', 'Pakistan', 'whadat road lahore', '2021-03-15 11:33:20', '0000-00-00 00:00:00'),
+(2, 'Punjab Group of Schools', '92', '0364566556', 'Punjjab', 'Pakistan', 'walton road Lahore', '2021-03-15 11:33:20', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `std_ans`
+--
+
+CREATE TABLE `std_ans` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `subject_id` varchar(255) NOT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `attampt_by` varchar(255) DEFAULT NULL,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `std_ans`
+--
+
+INSERT INTO `std_ans` (`id`, `student_id`, `class_id`, `subject_id`, `question_id`, `attampt_by`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '1', 1, 'student', 'active', '2021-03-23 17:52:39', NULL),
+(7, 1, 1, '1', 2, 'student', 'active', '2021-03-23 17:53:20', NULL),
+(9, 1, 1, '1', 4, 'student', 'active', '2021-03-23 17:53:38', NULL),
+(10, 1, 1, '1', 6, 'student', 'active', '2021-03-23 17:53:51', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `std_ans_detail`
+--
+
+CREATE TABLE `std_ans_detail` (
+  `id` int(11) NOT NULL,
+  `ans_id` int(11) DEFAULT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `std_answer` text,
+  `file_type` varchar(255) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `std_ans_detail`
+--
+
+INSERT INTO `std_ans_detail` (`id`, `ans_id`, `question_id`, `std_answer`, `file_type`, `file_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'a', NULL, NULL, '2021-03-23 17:52:39', NULL),
+(8, 8, 0, '0', 'video', '8901616504000..mp4', '2021-03-23 17:53:20', NULL),
+(9, 9, 2, 'i ma salman', NULL, NULL, '2021-03-23 17:53:38', NULL),
+(10, 10, 6, 'lsdlsdslssl s slsl sssd', 'pronounciation', NULL, '2021-03-23 17:53:52', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `std_query`
+--
+
+CREATE TABLE `std_query` (
+  `id` int(11) NOT NULL,
+  `std_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `audio` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `std_query`
+--
+
+INSERT INTO `std_query` (`id`, `std_id`, `class_id`, `subject_id`, `content`, `audio`, `video`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, NULL, '', '', '2021-03-26 15:09:22', NULL),
+(2, 1, 1, 1, NULL, '', '', '2021-03-26 15:10:25', NULL),
+(3, 1, 1, 1, 'fdfdfdfddf', '', '', '2021-03-26 15:17:07', NULL),
+(4, 1, 1, 1, 'dfdfdfd', '', '', '2021-03-26 15:18:19', NULL),
+(5, 1, 1, 1, 'sdsdsds', '', '', '2021-03-26 15:19:57', NULL),
+(6, 1, 1, 2, NULL, '', '8411616754079..mp4', '2021-03-26 15:21:19', NULL),
+(7, 1, 1, 1, NULL, '', '3581616755197.928Z.mp3', '2021-03-26 15:39:57', NULL),
+(8, 1, 1, 1, NULL, '8521616755253.788Z.mp3', '', '2021-03-26 15:40:53', NULL),
+(9, 1, 1, 1, 'ffgrfg', '', '', '2021-03-26 15:42:44', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `father_name` varchar(255) NOT NULL,
+  `email` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
+  `mobile` varchar(100) DEFAULT NULL,
+  `country_code` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'requested',
+  `gender` varchar(15) DEFAULT NULL,
+  `dob` varchar(255) NOT NULL,
+  `cnic` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `b_form` varchar(255) DEFAULT NULL,
+  `certificate` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` int(11) DEFAULT NULL,
+  `is_deleted` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `father_name`, `email`, `mobile`, `country_code`, `address`, `status`, `gender`, `dob`, `cnic`, `class`, `country`, `province`, `image`, `b_form`, `certificate`, `created_at`, `updated_at`, `is_deleted`) VALUES
+(1, 'Salman', 'Akram', 'salmanrazabwn@gmail.com', '03334636416', '297', 'Chak Hotiyana, Pakistan', 'approved', 'male', '2021-03-18', '3110155853557', '1', '1', '1', '1', '0', '0', '2021-03-18 11:20:25', NULL, NULL),
+(2, 'Faheem', 'Akram', 'salmanrazabwn@gmail.com', '03334636416', '297', 'Chak Hotiyana, Pakistan', 'reject', 'male', '2021-03-18', '3110155853557', '1', '2', '1', '0', '0', '0', '2021-03-18 11:20:25', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `subject_title` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `class_id`, `subject_title`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Urdu', '2021-03-22 11:57:49', NULL),
+(2, 1, 'English', '2021-03-22 11:57:49', NULL),
+(3, 0, 'Math', '2021-03-26 11:20:37', NULL),
+(4, 0, 'Physics', '2021-03-26 11:20:37', NULL),
+(5, 0, 'Computer', '2021-03-26 11:20:56', NULL),
+(6, 0, 'Islamic Study', '2021-03-26 11:20:56', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject_plan`
+--
+
+CREATE TABLE `subject_plan` (
+  `id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject_plan`
+--
+
+INSERT INTO `subject_plan` (`id`, `class_id`, `subject_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2021-03-22 17:49:59', NULL),
+(2, 1, 2, '2021-03-22 17:49:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `father_name` varchar(255) NOT NULL,
+  `email` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
+  `mobile` varchar(100) DEFAULT NULL,
+  `country_code` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `gender` varchar(15) DEFAULT NULL,
+  `dob` varchar(255) NOT NULL,
+  `cnic` varchar(255) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `b_form` varchar(255) NOT NULL,
+  `certificate` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` int(11) DEFAULT NULL,
+  `is_deleted` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `name`, `father_name`, `email`, `mobile`, `country_code`, `address`, `status`, `gender`, `dob`, `cnic`, `subject_id`, `country`, `province`, `image`, `b_form`, `certificate`, `created_at`, `updated_at`, `is_deleted`) VALUES
+(1, 'Salman', 'Akram', 'abc@gmail.com', '03334636416', '54', 'bwn', 'active', 'male', '2021-03-15', '311405544', 1, '1', '1', '', '1615810382.jpg', '1615810382.jpg', '2021-03-15 17:13:02', NULL, NULL),
+(2, 'Ali', 'Akbar', 'ali@gmail.com', '03334636416', '61', 'bahawalnagar', 'active', 'male', '2021-03-15', '3110155853557', 4, '1', '1', '', '1615810679.jpg', '1615810679.jpg', '2021-03-15 17:17:59', NULL, NULL),
+(3, 'Zaeem', 'Akram', 'zaeem@gmail.com', '03334636416', '54', 'bahawalnagar', 'active', 'male', '2021-03-02', '3110155468547', 1, '1', '1', '', '1615810942.png', '1615810942.jpg', '2021-03-15 17:22:22', NULL, NULL),
+(4, 'Rashid', 'Manzoor', 'rashid@gmail.com', '0302215545555', 'Pakistan (+92)', 'Bahawalnagar', 'active', 'male', '2021-03-25', '31101222545558', 1, '1', '1', '', '1616659186.jpg', '1616659186.jpg', '2021-03-25 12:59:47', NULL, NULL),
+(5, 'Hassan', 'Abbas', 'hassan@gmail.com', '03334636416', '213', 'bahawalnagar', 'active', 'male', '2021-03-01', '3110155465587', 1, 'Albania', '1', '', '1616669910.jpg', '1616669910.jpg', '2021-03-25 15:58:30', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(244) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'requested',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `account_id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Salman', 'salmanrazabwn@gmail.com', NULL, '$2y$10$hVMN7S00Q2nMfoJF8Vfka.7QaOlb2vqS9NKde.DMNMguooGWJv89u', 'student', NULL, 'approved', NULL, NULL),
+(2, 0, 'Admin', 'admin@gmail.com', NULL, '$2y$10$hVMN7S00Q2nMfoJF8Vfka.7QaOlb2vqS9NKde.DMNMguooGWJv89u', 'admin', NULL, 'approved', NULL, NULL),
+(3, 3, 'Teacher', 'teacher@gmail.com', NULL, '$2y$10$hVMN7S00Q2nMfoJF8Vfka.7QaOlb2vqS9NKde.DMNMguooGWJv89u', 'teacher', NULL, 'approved', NULL, NULL),
+(5, 2, 'Faheem', 'faheem@gmail.com', NULL, '$2y$10$hVMN7S00Q2nMfoJF8Vfka.7QaOlb2vqS9NKde.DMNMguooGWJv89u', 'student', NULL, 'pending', NULL, NULL),
+(6, 4, 'Rashid', 'rashid@gmail.com', NULL, '$2y$10$DN0afHFfqWXHa2Vsh51OGOjK.qlehcrhAHuQN6QWvJl8esopCS952', 'teacher', NULL, 'approved', NULL, NULL),
+(8, 3, 'Ali', 'ali@gmail.com', NULL, '$2y$10$DN0afHFfqWXHa2Vsh51OGOjK.qlehcrhAHuQN6QWvJl8esopCS952', 'teacher', NULL, 'pending', NULL, NULL),
+(9, 2, 'Ali Abbass', 'abbass@gmail.com', NULL, '$2y$10$DN0afHFfqWXHa2Vsh51OGOjK.qlehcrhAHuQN6QWvJl8esopCS952', 'teacher', NULL, 'rejected', NULL, NULL),
+(10, 5, 'Hassan', 'hassan@gmail.com', NULL, '$2y$10$Xa.7r.sW8Va.K7dZwO73q.xQB4TLFJB4TpFkL8Q01s2Eq4yJWHteW', 'teacher', NULL, 'requested', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `video_name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `videos`
+--
+
+INSERT INTO `videos` (`id`, `account_id`, `video_name`, `type`, `created_by`, `created_at`) VALUES
+(1, 6, 'audio', 'audio', 'contact-us', '2021-03-09 18:23:10'),
+(2, 6, '5381615296266.773Z.mp3', 'audio', 'contact-us', '2021-03-09 18:24:26'),
+(3, 7, '3781615874634..mp4', 'video', 'contact-us', '2021-03-16 11:03:55'),
+(4, 9, '9121616754891.358Z.mp3', 'audio', 'contact-us', '2021-03-26 15:34:51'),
+(5, 9, '9161616754988.983Z.mp3', 'audio', 'contact-us', '2021-03-26 15:36:28');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cms_pages`
+--
+ALTER TABLE `cms_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cms_pages_detail`
+--
+ALTER TABLE `cms_pages_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `country`
+--
+ALTER TABLE `country`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_services`
+--
+ALTER TABLE `customer_services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `province`
+--
+ALTER TABLE `province`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `questions_detail`
+--
+ALTER TABLE `questions_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `school`
+--
+ALTER TABLE `school`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `school_branches`
+--
+ALTER TABLE `school_branches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `std_ans`
+--
+ALTER TABLE `std_ans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `std_ans_detail`
+--
+ALTER TABLE `std_ans_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `std_query`
+--
+ALTER TABLE `std_query`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_usr_name` (`name`),
+  ADD KEY `idx_usr_status` (`status`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subject_plan`
+--
+ALTER TABLE `subject_plan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `cms_pages`
+--
+ALTER TABLE `cms_pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `cms_pages_detail`
+--
+ALTER TABLE `cms_pages_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `country`
+--
+ALTER TABLE `country`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `customer_services`
+--
+ALTER TABLE `customer_services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `province`
+--
+ALTER TABLE `province`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `questions_detail`
+--
+ALTER TABLE `questions_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `school`
+--
+ALTER TABLE `school`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `school_branches`
+--
+ALTER TABLE `school_branches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `std_ans`
+--
+ALTER TABLE `std_ans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `std_ans_detail`
+--
+ALTER TABLE `std_ans_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `std_query`
+--
+ALTER TABLE `std_query`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `subject_plan`
+--
+ALTER TABLE `subject_plan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

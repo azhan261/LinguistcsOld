@@ -1,0 +1,103 @@
+{
+  "name": "linguistics",
+  "homepage": "http://linguistics.one",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@fortawesome/fontawesome-free": "5.15.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "@stripe/stripe-js": "^1.14.0",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@tinymce/tinymce-react": "^3.12.6",
+    "antd": "^4.18.4",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "4.5.3",
+    "cdbreact": "^1.1.0",
+    "chart.js": "2.9.4",
+    "classnames": "2.2.6",
+    "emailjs-com": "^3.1.0",
+    "font-awesome": "^4.7.0",
+    "formik": "^2.2.9",
+    "html2canvas": "^1.4.0",
+    "iink-js": "^1.4.5",
+    "mic-recorder-to-mp3": "^2.2.2",
+    "moment-timezone": "^0.5.33",
+    "node-sass": "4.14.1",
+    "node-sass-package-importer": "5.3.2",
+    "perfect-scrollbar": "1.5.0",
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-bootstrap-modal": "^4.2.0",
+    "react-bootstrap-validation": "^0.1.11",
+    "react-chartjs-2": "2.11.1",
+    "react-chat-engine": "^1.11.22",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-countdown-circle-timer": "^2.5.3",
+    "react-dom": "17.0.1",
+    "react-form": "^4.0.1",
+    "react-hook-form": "^7.0.2",
+    "react-modal": "^3.14.3",
+    "react-notification-alert": "0.0.13",
+    "react-notify-toast": "^0.5.1",
+    "react-pageflip": "^2.0.3",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.1",
+    "react-simple-keyboard": "^3.2.18",
+    "react-slick": "^0.28.1",
+    "react-webcam": "^5.2.4",
+    "reactstrap": "8.7.1",
+    "simple-keyboard-layouts": "^3.0.138",
+    "simple-peer": "^9.11.0",
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.1.2",
+    "stripe": "^8.148.0",
+    "sweetalert2": "^11.3.6",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && gulp licenses",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "compile-scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css",
+    "minify-scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.min.css --output-style compressed",
+    "map-scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css --source-map true"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "optionalDependencies": {
+    "eslint-plugin-flowtype": "5.2.0",
+    "jquery": "3.5.1",
+    "typescript": "4.1.2"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8"
+  }
+}
